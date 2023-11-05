@@ -20,6 +20,12 @@ public class ServiceLayer {
 
     public String addHotel(Hotel hotel)
     {
+        if (hotel == null) {
+            return "FAILURE";
+        }
+        if (hotel.getHotelName() == null) {
+            return "FAILURE";
+        }
         if(hotelMap.containsKey(hotel.getHotelName()))
             return "FAILURE";
 
@@ -51,8 +57,12 @@ public class ServiceLayer {
     {
         String uuid = UUID.randomUUID().toString().replace("-", "");
         int rent =0;
+
         for(Hotel hotel: hotelMap.values())
         {
+            if(hotelMap.get(booking.getHotelName()).getAvailableRooms()<booking.getNoOfRooms()){
+                return -1;
+            }
             if(hotel.getHotelName().equals(booking.getHotelName()))
             {
                 rent = hotel.getPricePerNight();
