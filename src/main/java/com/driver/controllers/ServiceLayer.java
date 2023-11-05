@@ -77,19 +77,19 @@ public class ServiceLayer {
 
     public Hotel updateFacilities(List<Facility> newFacilities, String hotelName)
     {
-//        List<Facility> res = new ArrayList<>();
-//        for(Hotel hotel: hotelMap.values())
-//        {
-//            if(hotel.getHotelName().equals(hotelName))
-//            {
-//                List<Facility> fac = hotel.getFacilities();
-//                for (Facility f : newFacilities) {
-//                    if (!fac.contains(f))
-//                        res.add(f);
-//                }
-//            }
-//            hotel.setFacilities(res);
-//        }
+        List<Facility> res = new ArrayList<>();
+        for(Hotel hotel: hotelMap.values())
+        {
+            if(hotel.getHotelName().equals(hotelName))
+            {
+                List<Facility> fac = hotel.getFacilities();
+                for (Facility f : newFacilities) {
+                    if (!fac.contains(f))
+                        res.add(f);
+                }
+            }
+            hotel.setFacilities(res);
+        }
         Hotel hotel = hotelMap.get(hotelName);
         return hotel;
     }
